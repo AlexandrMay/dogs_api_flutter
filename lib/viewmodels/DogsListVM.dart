@@ -20,8 +20,11 @@ class DogsListViewModel extends ChangeNotifier {
     notifyListeners();
     List<Dogs> dogs = await WebService().fetchDogs();
     this.dogs = dogs.map((dog) => DogsViewModel(dog: dog)).toList();
-    this.loadingStatus = this.dogs.isEmpty ? LoadingStatus.empty : LoadingStatus.completed;
+    if(dogs.length == 0) {
+      this.loadingStatus = LoadingStatus.empty;
+    } else {
+      this.loadingStatus = LoadingStatus.completed;
+    }
     notifyListeners();
   }
-
 }

@@ -24,7 +24,7 @@ class _DogsListState extends State<DogsListPage> {
       case LoadingStatus.empty:
         return Align(child: Text("No results found"));
       case LoadingStatus.completed:
-        return Expanded(child: DogsList(dogs: vm.dogs));
+        return Align(child: DogsList(dogs: vm.dogs));
     }
   }
 
@@ -38,12 +38,7 @@ class _DogsListState extends State<DogsListPage> {
       appBar: AppBar(
       title: Text("Dogs List"),
       ),
-      body: Column(children: <Widget>[
-        _buildList(context, vm)
-      ],
-      )
-    );
+      body: _buildList(context, vm)
+      );
   }
-
-
 }
